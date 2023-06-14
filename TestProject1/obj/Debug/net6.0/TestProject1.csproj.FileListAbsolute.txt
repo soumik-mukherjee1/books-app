@@ -1,6 +1,0 @@
-C:\Soumik\.Net Course\books-app\TestProject1\bin\Debug\net6.0\CoverletSourceRootsMapping
-C:\Soumik\.Net Course\books-app\TestProject1\obj\Debug\net6.0\TestProject1.csproj.AssemblyReference.cache
-C:\Soumik\.Net Course\books-app\TestProject1\obj\Debug\net6.0\TestProject1.GeneratedMSBuildEditorConfig.editorconfig
-C:\Soumik\.Net Course\books-app\TestProject1\obj\Debug\net6.0\TestProject1.AssemblyInfoInputs.cache
-C:\Soumik\.Net Course\books-app\TestProject1\obj\Debug\net6.0\TestProject1.AssemblyInfo.cs
-C:\Soumik\.Net Course\books-app\TestProject1\obj\Debug\net6.0\TestProject1.csproj.CoreCompileInputs.cache
