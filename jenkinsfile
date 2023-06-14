@@ -21,7 +21,7 @@ pipeline {
             when {
                 allOf {
                     previousBuilds().success
-                    junit 'test_results.trx'
+                    fileExists 'TestResults/test_results.trx'
                 }
             }
             steps {
