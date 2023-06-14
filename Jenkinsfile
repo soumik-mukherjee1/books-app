@@ -20,8 +20,8 @@ pipeline {
         stage('Publish') {
             when {
                 allOf {
-                    previousBuilds().success
-                    fileExists 'TestResults/test_results.trx'
+                    expression { currentBuild.result == 'SUCCESS' }
+                    changeset '**/TestResults/*.trx'
                 }
             }
             steps {
