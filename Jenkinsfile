@@ -29,10 +29,4 @@ pipeline {
             }
         }
     }
-
-    post {
-        always {
-            step([$class: 'MSTestPublisher', testResultsFile: '**/TestResults/*.trx'])
-        }
-    }
 }
