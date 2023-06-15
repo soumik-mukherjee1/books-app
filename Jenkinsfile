@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        dotnet 'dotnet' // Assuming 'dotnet' tool is configured in Jenkins global tool configuration
-    }
-
     stages {
         stage('Build') {
             steps {
