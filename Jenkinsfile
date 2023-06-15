@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'dotnet clean'
-                bat 'rmdir /s /q "C:\\Soumik\\.Net Course\\books-app\\build"'
+                bat 'rmdir /s /q "C:\\Soumik\\.Net Course\\books-app\\build" 2>null'
                 sh 'dotnet build --configuration Debug'
             }
         }
