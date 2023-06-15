@@ -1,5 +1,6 @@
 ﻿using books_app.Controllers;
 using books_app.Data.Services;
+using books_app.Data.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using my_books.Data.Models;
@@ -73,6 +74,49 @@ namespace books_app_test
 
             Assert.AreEqual("Book 1", returnedBooks[0].Title);
             Assert.AreEqual("Book 2", returnedBooks[1].Title);
+        }
+
+        [TestMethod]
+        public void TestUpdateBookById_ShouldReturnUpdatedBook()
+        {
+            var updatedBookVM = new BookVM
+            {
+                Title = "Updated Book",
+                Description = "Updated Description",
+                IsRead = true,
+                DateRead = DateTime.Now,
+                Rate = 5,
+                Genre = "Fiction",
+                Author = "John Doe",
+                CoverUrl = "http://example.com/cover.jpg"
+            };
+
+            var updatedBook = new Book
+            {
+                Id = 5,
+                Title = updatedBookVM.Title,
+                Description = updatedBookVM.Description,
+                IsRead = updatedBookVM.IsRead,
+                DateRead = updatedBookVM.IsRead ? updatedBookVM.DateRead.Value : null,
+                Rate = updatedBookVM.IsRead ? updatedBookVM.Rate.Value : null,
+                Genre = updatedBookVM.Genre,
+                Author = updatedBookVM.Author,
+                CoverUrl = updatedBookVM.CoverUrl
+            };
+
+            var bookService = new Mock<BookService>();
+            bookService.Setup(x => x.UpdateBookById(It.IsAny<int>(), It.IsAny<BookVM>())).Returns(updatedBook);
+
+            var controller = new BooksController(bookService.Object);
+
+            var result = controller.UpdateBookById(5, updatedBookVM) as OkObjectResult;
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(200, result.StatusCode);
+
+            var updatedBookResult = result.Value as Book;
+            Assert.IsNotNull(updatedBookResult);
+            Assert.AreEqual(updatedBook.Id, updatedBookResult.Id);
         }
     }
 }

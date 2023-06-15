@@ -47,7 +47,7 @@ namespace books_app.Data.Services
             return _context.Books.FirstOrDefault(book => book.Id == bookId);
         } 
 
-        public Book UpdateBookById(int bookId,  BookVM book)
+        public virtual Book UpdateBookById(int bookId,  BookVM book)
         {
             var _book = _context.Books.FirstOrDefault(n => n.Id == bookId);
             if(_book != null)
