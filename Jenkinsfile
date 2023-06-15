@@ -15,8 +15,8 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    def testResultsDir = "${env.WORKSPACE}/TestResults"
-                    sh "dotnet test --configuration Debug --logger:trx --logger-output=${testResultsDir}"
+                    //def testResultsDir = "${env.WORKSPACE}/TestResults"
+                    sh "dotnet test --configuration Debug"
                 }
             }
         }
