@@ -67,7 +67,7 @@ namespace books_app.Data.Services
             return _book;
         }
 
-        public void deleteBookById(int bookId)
+        public virtual void deleteBookById(int bookId)
         {
             var _book = _context.Books.FirstOrDefault(n => n.Id == bookId);
             if(_book != null)
