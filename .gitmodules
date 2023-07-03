@@ -1,0 +1,3 @@
+[submodule "shop-app"]
+	path = shop-app
+	url = https://github.com/Procoder16/shop-app.git
