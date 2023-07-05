@@ -118,5 +118,27 @@ namespace books_app_test
             Assert.IsNotNull(updatedBookResult);
             Assert.AreEqual(updatedBook.Id, updatedBookResult.Id);
         }
+
+        [TestMethod]
+        public void TestDeleteBookById_ShouldDeleteBook()
+        {
+            // Arrange
+            var bookId = 5;
+
+            var bookService = new Mock<BookService>();
+            bookService.Setup(x => x.deleteBookById(It.IsAny<int>()));
+
+            var controller = new BooksController(bookService.Object);
+
+            // Act
+            var result = controller.DeleteBookById(bookId) as OkResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(200, result.StatusCode);
+
+            bookService.Verify(x => x.deleteBookById(bookId), Times.Once);
+        }
+
     }
 }
