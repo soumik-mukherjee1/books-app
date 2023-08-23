@@ -1,0 +1,36 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  build-idp:
+    name: Build IdP, Calculate SemVer and Unit Test
+    runs-on: ubuntu-latest
+       
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: General Step 1
+        run: |
+          echo "General step 1"
+    
+      - name: Should Run only in feature branch
+        if: github.ref == 'refs/heads/feature'
+        run: |
+          echo "Inside feature branch"
+
+      - name: Should Run only in testing branch
+        if: github.ref == 'refs/heads/testing'
+        run: |
+          echo "Inside testing branch"
+
+      - name: General Step 2
+        run: |
+          echo "General step 2"
